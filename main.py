@@ -21,4 +21,14 @@ async def convert_money(from_currency: str, to_currency: str, amount: float):
     if from_currency not in VALID_CURRENCIES or to_currency not in VALID_CURRENCIES:
         raise HTTPException(status_code=400, detail="Invalid currency!")
 
-    return get_current_currency_values()
+    currency_values = get_current_currency_values()
+
+    if from_currency == 'USD':
+        converted_amount = amount * currency_values[to_currency]
+    elif to_currency == 'USD':
+        converted_amount = amount/currency_values[from_currency]
+    else:
+        return {'message': 'Not implemented!'}
+
+    converted_amount = round(converted_amount, 2)
+    return {'amount': converted_amount, 'currency': to_currency}
