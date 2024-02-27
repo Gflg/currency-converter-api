@@ -26,7 +26,7 @@ def convert_amount_to_currency(from_currency, to_currency, amount):
         dollars_amount = amount/currency_values[from_currency]
         converted_amount = dollars_amount * currency_values[to_currency]
 
-    return round(converted_amount, 2)
+    return converted_amount
 
 
 @app.get("/convert/")
