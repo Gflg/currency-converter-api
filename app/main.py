@@ -30,11 +30,6 @@ def convert_amount_to_currency(from_currency, to_currency, amount):
     return converted_amount
 
 
-@app.get("/")
-async def read_main():
-    return {"msg": "Hello World"}
-
-
 @app.get("/convert/")
 async def convert_money(from_currency: str, to_currency: str, amount: float):
     if from_currency not in VALID_CURRENCIES or to_currency not in VALID_CURRENCIES:
