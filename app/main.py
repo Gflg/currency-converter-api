@@ -5,8 +5,8 @@ import requests
 app = FastAPI()
 
 
-def get_current_currency_values():
-    response = requests.get(f'https://api.currencybeacon.com/v1/latest?api_key={API_KEY}')
+def get_current_currency_values(api_key):
+    response = requests.get(f'https://api.currencybeacon.com/v1/latest?api_key={api_key}')
     response_body = response.json()
     currencies_with_values = {}
     
@@ -16,7 +16,8 @@ def get_current_currency_values():
 
 
 def convert_amount_to_currency(from_currency, to_currency, amount):
-    currency_values = get_current_currency_values()
+    currency_values = get_current_currency_values(API_KEY)
+    print(currency_values)
 
     if from_currency == 'USD':
         converted_amount = amount * currency_values[to_currency]
@@ -27,6 +28,11 @@ def convert_amount_to_currency(from_currency, to_currency, amount):
         converted_amount = dollars_amount * currency_values[to_currency]
 
     return converted_amount
+
+
+@app.get("/")
+async def read_main():
+    return {"msg": "Hello World"}
 
 
 @app.get("/convert/")
