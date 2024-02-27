@@ -31,5 +31,8 @@ def convert_amount_to_currency(from_currency, to_currency, amount):
 
 @app.get("/convert/")
 async def convert_money(from_currency: str, to_currency: str, amount: float):
+    if from_currency not in VALID_CURRENCIES or to_currency not in VALID_CURRENCIES:
+        raise HTTPException(status_code=400, detail="Invalid currency!")
+
     converted_amount = convert_amount_to_currency(from_currency, to_currency, amount)
     return {'amount': converted_amount, 'currency': to_currency}
