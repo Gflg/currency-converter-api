@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    working_dir: $HOME/api/app
+    volumes:
+      - ./app:$HOME/api/app
+    ports:
+      - 5000:5000
+    restart: on-failure
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
