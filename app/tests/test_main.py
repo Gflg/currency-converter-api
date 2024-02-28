@@ -84,3 +84,18 @@ def test_convert_amount_with_other_currencies(mocker):
 
     converted_amount = convert_amount_to_currency(from_currency, to_currency, amount)
     assert converted_amount == (amount / currencies[from_currency]) * currencies[to_currency]
+
+
+def test_convert_currency():
+    from_currency = 'BRL'
+    to_currency = 'ETH'
+    amount = 2000.0
+    params = f'?from_currency={from_currency}&to_currency={to_currency}&amount={amount}'
+
+    response = client.get(f'/convert{params}')
+    assert response.status_code == 200
+    
+    converted_amount_json = response.json()
+    assert isinstance(converted_amount_json['amount'], float)
+    assert isinstance(converted_amount_json['currency'], str)
+    assert converted_amount_json['currency'] == to_currency
