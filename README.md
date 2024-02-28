@@ -23,7 +23,11 @@ Uma vez que o repositório for clonado com sucesso, basta entrar no diretório c
 
 É preciso criar um arquivo **.env** baseado no arquivo **.env.sample**. A API key pode ser criada gratuitamente com a criação de uma conta nesse [site](https://currencybeacon.com/) utilizado para recuperar as cotações das moedas em tempo real. Você também pode utilizar a API key usada no desenvolvimento dessa aplicação para facilitar o seu uso: 
 
->! B2H3NE0qJLnaS4XsEODlsLwY6K0IzArh
+<details>
+  <summary>API key</summary>
+  B2H3NE0qJLnaS4XsEODlsLwY6K0IzArh
+  
+</details><br>
 
 Existe 3 formas distintas para executar essa aplicação:
 
