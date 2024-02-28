@@ -29,7 +29,7 @@ Uma vez que o repositório for clonado com sucesso, basta entrar no diretório c
   
 </details><br>
 
-Existe 3 formas distintas para executar essa aplicação:
+Existem 3 formas distintas para executar essa aplicação:
 
 1. Docker
 2. Docker-compose
